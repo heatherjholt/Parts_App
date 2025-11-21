@@ -12,8 +12,47 @@ def connect_db():
             host="localhost",
             user="root",
             password="andy", #REPLACE WITH YOUR MYSQL ROOT PASSWORD
-            database="suppliers_and_parts"
     )
+        #create database if not exists and use it, easier for testing
+        cursor = connection.cursor()
+        cursor.execute("create database if not exists suppliers_and_parts")
+        cursor.execute("use suppliers_and_parts")
+
+        #create tables if not exists
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS Supplier (
+            Sno VARCHAR(5) PRIMARY KEY,
+            Sname VARCHAR(20),
+            Status INT,
+            City VARCHAR(20)
+        )
+    """)
+        
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS Part (
+                Pno VARCHAR(5) PRIMARY KEY,
+                Pname VARCHAR(20),
+                Color VARCHAR(20),
+                Weight INT,
+                City VARCHAR(20)
+            )
+        """)
+
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS Shipment (
+                Sno VARCHAR(5),
+                Pno VARCHAR(5),
+                Qty INT,
+                Price DECIMAL(10,4),
+                PRIMARY KEY (Sno, Pno),
+                FOREIGN KEY (Sno) REFERENCES Supplier(Sno),
+                FOREIGN KEY (Pno) REFERENCES Part(Pno)
+            )
+        """)
+
+        connection.commit()
+        cursor.close()
+
         print("database connection successful")
         return connection
 
