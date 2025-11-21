@@ -1,3 +1,5 @@
+#using MySQL, Python with Flask web framework to create a web app that interacts with a database of suppliers, parts, and shipments.
+
 from flask import Flask, render_template, request
 import mysql.connector
 
@@ -9,7 +11,7 @@ def connect_db():
         connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="andy",
+            password="andy", #REPLACE WITH YOUR MYSQL ROOT PASSWORD
             database="suppliers_and_parts"
     )
         print("database connection successful")
@@ -165,6 +167,49 @@ def reset():
     finally:
         cursor.close()
         connection.close()
+
+#view entire database
+@app.route('/view_database', methods=['POST'])
+def view_database():
+    conn = connect_db()
+    cursor = conn.cursor(dictionary=True)
+
+    # Fetch Supplier
+    cursor.execute("SELECT * FROM supplier")
+    suppliers = cursor.fetchall()
+
+    # Fetch Parts
+    cursor.execute("SELECT * FROM part")
+    parts = cursor.fetchall()
+
+    # Fetch Shipments
+    cursor.execute("SELECT * FROM shipment")
+    shipments = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    # Build HTML
+    html = "<h3>SUPPLIER</h3>"
+    html += "<table class='table table-bordered'><tr><th>Sno</th><th>Sname</th><th>Status</th><th>City</th></tr>"
+    for s in suppliers:
+        html += f"<tr><td>{s['Sno']}</td><td>{s['Sname']}</td><td>{s['Status']}</td><td>{s['City']}</td></tr>"
+    html += "</table>"
+
+    html += "<h3>PART</h3>"
+    html += "<table class='table table-bordered'><tr><th>Pno</th><th>Pname</th><th>Color</th><th>Weight</th><th>City</th></tr>"
+    for p in parts:
+        html += f"<tr><td>{p['Pno']}</td><td>{p['Pname']}</td><td>{p['Color']}</td><td>{p['Weight']}</td><td>{p['City']}</td></tr>"
+    html += "</table>"
+
+    html += "<h3>SHIPMENT</h3>"
+    html += "<table class='table table-bordered'><tr><th>Sno</th><th>Pno</th><th>Qty</th><th>Price</th></tr>"
+    for sh in shipments:
+        html += f"<tr><td>{sh['Sno']}</td><td>{sh['Pno']}</td><td>{sh['Qty']}</td><td>{sh['Price']}</td></tr>"
+    html += "</table>"
+
+    return render_template("index.html", popup_message=html)
+
 
 #routes
 
