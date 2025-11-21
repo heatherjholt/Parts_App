@@ -10,13 +10,13 @@ h1, h2 {
 }
 
 .btn-primary {
-    background-color: #8b5cf6;
+    background-color: #483081;
     border-color: #22123f;
     color: white;
 }
 .btn-primary:hover {
     background-color: #22123f;
-    border-color: #8b5cf6;
+    border-color: #483081;
 }
 
 .btn-reset {
@@ -60,7 +60,41 @@ input::placeholder {
     border-top: 1px solid #4c3a75;
 }
 
-/* White 'X' close button */
 .btn-close-white {
     filter: invert(1);
+}
+
+.main-container {
+    width: 600px; 
+    margin: 0 auto; 
+    text-align: center; 
+}
+
+button.btn {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 10px;
+}
+
+input.form-control {
+    width: 100% !important;
+    max-width: 500px;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.modal-footer {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 20px !important;
+}
+
+input::placeholder {
+    text-align: center;
 }
