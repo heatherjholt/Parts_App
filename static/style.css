@@ -1,0 +1,66 @@
+body {
+    background-color: #0d0b16;
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+}
+
+h1, h2 {
+    color: #ffffff;
+    margin-top: 25px;
+}
+
+.btn-primary {
+    background-color: #8b5cf6;
+    border-color: #22123f;
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #22123f;
+    border-color: #8b5cf6;
+}
+
+.btn-reset {
+    background-color: #276894 !important;
+    border-color: #44dbef !important;
+    color: white !important;
+}
+
+.btn-reset:hover {
+    background-color: #44dbef !important;
+    border-color: #276894 !important;
+    color: white !important;
+}
+
+.section-box {
+    background-color: #1a1528;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0px 0px 12px rgba(139, 92, 246, 0.25);
+}
+
+input {
+    background-color: #2a213d !important;
+    color: white !important;
+    border: 1px solid #4c3a75 !important;
+}
+
+input::placeholder {
+    color: #c4b5fd !important;
+}
+
+.modal-content {
+    background-color: #1a1528;
+    color: white;
+}
+.modal-header {
+    border-bottom: 1px solid #4c3a75;
+}
+.modal-footer {
+    border-top: 1px solid #4c3a75;
+}
+
+/* White 'X' close button */
+.btn-close-white {
+    filter: invert(1);
+}
