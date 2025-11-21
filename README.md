@@ -25,8 +25,8 @@ Before running the project, make sure you have the following installed:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/supplier-database.git
-cd supplier-database
+git clone https://github.com/heatherjholt/Parts_App
+cd Parts_app
 ```
 ### 2. Start MySQL Server
 
