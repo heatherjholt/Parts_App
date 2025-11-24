@@ -9,6 +9,8 @@ The app allows users to:
 - Run custom queries (suppliers by part number, increase supplier status, etc.)  
 - Display query results cleanly using Bootstrap modals
 
+https://youtu.be/rjsaQDBEK1I
+
 ## Prerequisites
 
 Before running the project, make sure you have the following installed:
